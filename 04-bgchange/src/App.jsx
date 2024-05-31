@@ -2,7 +2,12 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [color, setColor] = useState("skyblue");
+  const [color, setColor] = useState("#ff0000");
+
+  function colorPicker(event) {
+    setColor(event.target.value);
+    document.getElementById("pickColor").value = event.target.value;
+  }
   return (
     <div
       className="w-full h-screen duration-200 "
@@ -12,25 +17,20 @@ function App() {
         <div className="flex flex-wrap justify-center gap-3 shadow-lg bg-white px-3 py-2 rounded-3xl">
           <button
             className="outline-none px-4 py-1 rounded-full shadow-lg text-black"
-            onClick={() => setColor("red")}
-            style={{ backgroundColor: "red" }}
+            onClick={() => setColor("#BAB86C")}
+            style={{ backgroundColor: "#BAB86C" }}
           >
-            Red
+            Olive
           </button>
           <button
             className="outline-none px-4 py-1 rounded-full shadow-lg text-black"
-            onClick={() => setColor("green")}
-            style={{ backgroundColor: "green" }}
+            onClick={() => setColor("#00ff00")}
+            style={{ backgroundColor: "#00ff00" }}
           >
             Green
           </button>
-          <button
-            className="outline-none px-4 py-1 rounded-full shadow-lg text-black"
-            onClick={() => setColor("skyblue")}
-            style={{ backgroundColor: "skyblue" }}
-          >
-            Reset
-          </button>
+          <input type="color" onChange={colorPicker} id="pickColor" />
+          <label htmlFor="pickColor">Choose background color</label>
         </div>
       </div>
     </div>
